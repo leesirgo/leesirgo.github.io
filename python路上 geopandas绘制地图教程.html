@@ -1,0 +1,2723 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>  <!--head标签里的东西基本都是元信息，给电脑指定的基本信息-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">  <!--viewport表示浏览器，width=device-width表示适应设备的宽度，initial-scale=1.0表示初始画面1倍-->
+    <title>我的demo主题</title>  <!--html网页的标题-->
+    <meta http-equiv="x-ua-compatible"  content="ie=edge"> <!--让浏览器火力全开-->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/normalize/7.0.0/normalize.min.css">  <!--引用这个前人总结的cdn，规避浏览器设置的某些不好的特性-->
+    <link rel="stylesheet" href="css/main.css"> <!--link引入CSS样式-->
+    <link media="(max-width: 768px)" rel="stylesheet" href="css/mobile.css">  <!--搜索CSS媒体查询mdn-->
+</head>
+
+<body> <!--body是可见元素存放的地方-->
+
+      <div class="sidebar"> <!--博客的侧边栏，第一个大块-->
+          <div class="header">  <!--1.1博客内容的标题-->
+              <img src="image\profile.png" class="image">
+              <a href="index.html" class="logo">leeSir流年志</a>  <!--返回主页-->
+              <div class="intro">假装爱Python的learner</div>
+              </div>
+          <div class="nav">      <!--1.2博客导航,div说明这个区域是导航区-->
+               <a href="about me.html" class="item">关于我</a>  <!--导航区div里面的元素是个超链接用a,不再是div-->
+               <a href="python路上.html" class="item">Python路上</a>
+               <a href="我的书架.html" class="item">我的书架</a>
+               <a href="杂谈.html" class="item">杂谈</a>
+               <a href="moment.html" class="item">Moment</a>
+          </div>
+          <div class="tag-list">   <!--1.3博客标签-->
+               <a class="item"></a>
+               <a class="item"></a>
+               <a class="item"></a>
+          </div>
+      </div>
+
+      <div class="main">     <!-- 博客的主栏，第二个大块-->
+           <div class="article-list">  <!--文章列表，就是文章阅读区-->
+               <div class="item">  <!--文章内容-->
+
+                   <div class="title">geopandas绘制地图教程</div>
+                   <div class="status">作者：leesir 时间：0902 标签：geopandas python </div>
+                    <div class="content">
+
+  <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#21442;&#32771;">&#21442;&#32771;<a class="anchor-link" href="#&#21442;&#32771;">&#182;</a></h1><p><a href="http://geopandas.org/mergingdata.html?highlight=merge">geopandas官方说明 棒！</a><br>
+<a href="http://pandas.pydata.org/pandas-docs/stable/10min.html">pandas官方说明 必须看</a><br>
+<a href="https://matplotlib.org/examples/color/colormaps_reference.html">colormap色域代码</a><br>
+<a href="https://zhuanlan.zhihu.com/p/22914622">案例 Python空间数据可视化利器之Geopandas</a><br></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#21152;&#36733;&#25991;&#20214;&#22836;">&#21152;&#36733;&#25991;&#20214;&#22836;<a class="anchor-link" href="#&#21152;&#36733;&#25991;&#20214;&#22836;">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="k">import</span> <span class="n">Basemap</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>设置中文显示</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pylab</span> <span class="k">import</span> <span class="n">mpl</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.sans-serif&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;FangSong&#39;</span><span class="p">]</span> <span class="c1"># 指定默认字体</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.unicode_minus&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1"># 解决保存图像是负号&#39;-&#39;显示为方块的问题</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#35835;&#21462;shp&#22320;&#22270;&#25991;&#20214;&#65292;&#24341;&#20837;&#20026;geodataframe&#23545;&#35937;">&#35835;&#21462;shp&#22320;&#22270;&#25991;&#20214;&#65292;&#24341;&#20837;&#20026;geodataframe&#23545;&#35937;<a class="anchor-link" href="#&#35835;&#21462;shp&#22320;&#22270;&#25991;&#20214;&#65292;&#24341;&#20837;&#20026;geodataframe&#23545;&#35937;">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">shp_ys</span><span class="o">=</span><span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;E:\map data for python\shp china wirh sourhsea nine lines\china bou2_4l.shp&#39;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;gb18030&#39;</span><span class="p">)</span><span class="c1">#读取shp文件</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>初步查看shp文件内容</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">shp_ys</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[39]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>FNODE_</th>
+      <th>TNODE_</th>
+      <th>LPOLY_</th>
+      <th>RPOLY_</th>
+      <th>LENGTH</th>
+      <th>BOU2_4M_</th>
+      <th>BOU2_4M_ID</th>
+      <th>GBCODE</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2</td>
+      <td>7</td>
+      <td>2</td>
+      <td>3</td>
+      <td>7.743</td>
+      <td>1</td>
+      <td>23</td>
+      <td>61030</td>
+      <td>LINESTRING (121.4884414672852 53.3326492309570...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7</td>
+      <td>12</td>
+      <td>2</td>
+      <td>3</td>
+      <td>6.426</td>
+      <td>2</td>
+      <td>15</td>
+      <td>61031</td>
+      <td>LINESTRING (125.35986328125 51.60979843139648,...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>12</td>
+      <td>16</td>
+      <td>2</td>
+      <td>3</td>
+      <td>2.006</td>
+      <td>3</td>
+      <td>80</td>
+      <td>61031</td>
+      <td>LINESTRING (124.7418670654297 48.9206924438476...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>16</td>
+      <td>21</td>
+      <td>2</td>
+      <td>3</td>
+      <td>2.281</td>
+      <td>4</td>
+      <td>99</td>
+      <td>61030</td>
+      <td>LINESTRING (124.2672882080078 48.5298576354980...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>21</td>
+      <td>23</td>
+      <td>2</td>
+      <td>3</td>
+      <td>0.587</td>
+      <td>5</td>
+      <td>75</td>
+      <td>61031</td>
+      <td>LINESTRING (122.3889236450195 47.3440093994140...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>26</td>
+      <td>27</td>
+      <td>2</td>
+      <td>3</td>
+      <td>0.277</td>
+      <td>6</td>
+      <td>77</td>
+      <td>61031</td>
+      <td>LINESTRING (123.3129730224609 47.0062255859375...</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>28</td>
+      <td>26</td>
+      <td>2</td>
+      <td>3</td>
+      <td>0.244</td>
+      <td>7</td>
+      <td>89</td>
+      <td>61030</td>
+      <td>LINESTRING (123.3081665039063 46.8497238159179...</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>27</td>
+      <td>29</td>
+      <td>2</td>
+      <td>3</td>
+      <td>0.480</td>
+      <td>8</td>
+      <td>90</td>
+      <td>61032</td>
+      <td>LINESTRING (123.526496887207 46.95620727539063...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>查看index索引</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">shp_ys</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[40]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>RangeIndex(start=0, stop=1785, step=1)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>该geodataframe对象的index索引为自动创建，是0~1785，以1为间隔的range数列</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>查看columns列名称</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[41]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">shp_ys</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[41]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Index([&#39;FNODE_&#39;, &#39;TNODE_&#39;, &#39;LPOLY_&#39;, &#39;RPOLY_&#39;, &#39;LENGTH&#39;, &#39;BOU2_4M_&#39;,
+       &#39;BOU2_4M_ID&#39;, &#39;GBCODE&#39;, &#39;geometry&#39;],
+      dtype=&#39;object&#39;)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>**用geodataframe对象的.describe()方法查看数据的描述性统计信息</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">shp_ys</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[42]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>FNODE_</th>
+      <th>TNODE_</th>
+      <th>LPOLY_</th>
+      <th>RPOLY_</th>
+      <th>LENGTH</th>
+      <th>BOU2_4M_</th>
+      <th>BOU2_4M_ID</th>
+      <th>GBCODE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>1785.000000</td>
+      <td>1785.000000</td>
+      <td>1785.000000</td>
+      <td>1785.000000</td>
+      <td>1785.000000</td>
+      <td>1785.000000</td>
+      <td>1785.000000</td>
+      <td>1785.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>927.574790</td>
+      <td>929.905882</td>
+      <td>128.782073</td>
+      <td>210.784874</td>
+      <td>0.542120</td>
+      <td>893.000000</td>
+      <td>17259.982633</td>
+      <td>35583.217367</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>586.838197</td>
+      <td>585.578736</td>
+      <td>241.160363</td>
+      <td>276.263779</td>
+      <td>1.354553</td>
+      <td>515.429433</td>
+      <td>16298.766414</td>
+      <td>15643.654356</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>0.004000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>26010.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>433.000000</td>
+      <td>432.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>0.030000</td>
+      <td>447.000000</td>
+      <td>219.000000</td>
+      <td>26010.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>876.000000</td>
+      <td>880.000000</td>
+      <td>1.000000</td>
+      <td>65.000000</td>
+      <td>0.070000</td>
+      <td>893.000000</td>
+      <td>26010.000000</td>
+      <td>26010.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>1344.000000</td>
+      <td>1344.000000</td>
+      <td>204.000000</td>
+      <td>327.000000</td>
+      <td>0.235000</td>
+      <td>1339.000000</td>
+      <td>26010.000000</td>
+      <td>61010.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>2131.000000</td>
+      <td>2131.000000</td>
+      <td>925.000000</td>
+      <td>926.000000</td>
+      <td>16.713000</td>
+      <td>1785.000000</td>
+      <td>61156.000000</td>
+      <td>99001.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>查看指定列数据，这里主要看一看GBCODE列</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[43]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">shp_ys</span><span class="p">[</span><span class="s1">&#39;GBCODE&#39;</span><span class="p">]</span> <span class="c1">#注意，没有逗号，有引号。不是shp_ys，[&#39;GBCODE&#39;]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[43]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0       61030
+1       61031
+2       61031
+3       61030
+4       61031
+5       61031
+6       61030
+7       61032
+8       61030
+9       61031
+10      61030
+11      61030
+12      61032
+13      61031
+14      61031
+15      61030
+16      61030
+17      61033
+18      61030
+19      61031
+20      61033
+21      61030
+22      61033
+23      61030
+24      61030
+25      61030
+26      61030
+27      61031
+28      61030
+29      61031
+        ...
+1755    26080
+1756    26080
+1757    26080
+1758    26080
+1759    26080
+1760    26100
+1761    26010
+1762    26100
+1763    26100
+1764    61010
+1765    26010
+1766    26100
+1767    26010
+1768    26010
+1769    61010
+1770    26080
+1771    26080
+1772    26080
+1773    26080
+1774    26080
+1775    26080
+1776    26080
+1777    26080
+1778    26080
+1779    26080
+1780    26100
+1781    26100
+1782    26100
+1783    26100
+1784    61010
+Name: GBCODE, Length: 1785, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>用pandas的pd.unique函数查看GBCODE列中的非重复项</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[44]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">shp_ys</span><span class="p">[</span><span class="s1">&#39;GBCODE&#39;</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[44]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([61030, 61031, 61032, 61033, 61035, 61034, 61010, 26010, 61020,
+       99001, 26100, 62010, 26080], dtype=int64)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>再看一下china bou2_4p.shp地图文件中的相关内容</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[45]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">shp_p</span><span class="o">=</span><span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;E:\map data for python\shp china wirh sourhsea nine lines\china bou2_4p.shp&#39;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;gb18030&#39;</span><span class="p">)</span>
+<span class="n">shp_p</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[45]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>AREA</th>
+      <th>PERIMETER</th>
+      <th>BOU2_4M_</th>
+      <th>BOU2_4M_ID</th>
+      <th>ADCODE93</th>
+      <th>ADCODE99</th>
+      <th>NAME</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>54.447</td>
+      <td>68.489</td>
+      <td>2</td>
+      <td>23</td>
+      <td>230000</td>
+      <td>230000</td>
+      <td>黑龙江省</td>
+      <td>POLYGON ((121.4884414672852 53.33264923095703,...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>129.113</td>
+      <td>129.933</td>
+      <td>3</td>
+      <td>15</td>
+      <td>150000</td>
+      <td>150000</td>
+      <td>内蒙古自治区</td>
+      <td>POLYGON ((121.4884414672852 53.33264923095703,...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>175.591</td>
+      <td>84.905</td>
+      <td>4</td>
+      <td>65</td>
+      <td>650000</td>
+      <td>650000</td>
+      <td>新疆维吾尔自治区</td>
+      <td>POLYGON ((96.38328552246094 42.72695541381836,...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>21.315</td>
+      <td>41.186</td>
+      <td>5</td>
+      <td>22</td>
+      <td>220000</td>
+      <td>220000</td>
+      <td>吉林省</td>
+      <td>POLYGON ((123.1710433959961 46.24668121337891,...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>15.603</td>
+      <td>38.379</td>
+      <td>6</td>
+      <td>21</td>
+      <td>210000</td>
+      <td>210000</td>
+      <td>辽宁省</td>
+      <td>POLYGON ((123.6901931762695 43.37676620483398,...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[46]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">shp_p</span><span class="p">[</span><span class="s1">&#39;NAME&#39;</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[46]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([&#39;黑龙江省&#39;, &#39;内蒙古自治区&#39;, &#39;新疆维吾尔自治区&#39;, &#39;吉林省&#39;, &#39;辽宁省&#39;, &#39;甘肃省&#39;, &#39;河北省&#39;, &#39;北京市&#39;,
+       &#39;山西省&#39;, &#39;天津市&#39;, &#39;陕西省&#39;, &#39;宁夏回族自治区&#39;, &#39;青海省&#39;, &#39;山东省&#39;, &#39;西藏自治区&#39;, &#39;河南省&#39;, &#39;江苏省&#39;,
+       &#39;安徽省&#39;, &#39;四川省&#39;, &#39;湖北省&#39;, &#39;重庆市&#39;, &#39;上海市&#39;, &#39;浙江省&#39;, &#39;湖南省&#39;, &#39;江西省&#39;, &#39;云南省&#39;,
+       &#39;贵州省&#39;, &#39;福建省&#39;, &#39;广西壮族自治区&#39;, &#39;台湾省&#39;, &#39;广东省&#39;, &#39;香港特别行政区&#39;, &#39;海南省&#39;], dtype=object)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>结论：原以为china bou2_4l.shl中的GBCODE项就是china bou2_4p.shp文件中的NAME项，看来猜错了……</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[47]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">shp_p</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[47]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>AREA</th>
+      <th>PERIMETER</th>
+      <th>BOU2_4M_</th>
+      <th>BOU2_4M_ID</th>
+      <th>ADCODE93</th>
+      <th>ADCODE99</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>924.000000</td>
+      <td>924.000000</td>
+      <td>924.000000</td>
+      <td>924.000000</td>
+      <td>924.000000</td>
+      <td>924.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>1.040711</td>
+      <td>1.496485</td>
+      <td>463.528139</td>
+      <td>1854.803030</td>
+      <td>406201.298701</td>
+      <td>406190.476190</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>9.150730</td>
+      <td>8.874475</td>
+      <td>266.927562</td>
+      <td>1174.414501</td>
+      <td>151432.189711</td>
+      <td>151425.120593</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000000</td>
+      <td>0.006000</td>
+      <td>2.000000</td>
+      <td>0.000000</td>
+      <td>110000.000000</td>
+      <td>110000.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>0.000000</td>
+      <td>0.024000</td>
+      <td>232.750000</td>
+      <td>586.250000</td>
+      <td>330000.000000</td>
+      <td>330000.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>0.000000</td>
+      <td>0.043000</td>
+      <td>463.500000</td>
+      <td>2234.000000</td>
+      <td>350000.000000</td>
+      <td>350000.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>0.000000</td>
+      <td>0.086250</td>
+      <td>694.250000</td>
+      <td>2989.000000</td>
+      <td>440000.000000</td>
+      <td>440000.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>175.591000</td>
+      <td>129.933000</td>
+      <td>926.000000</td>
+      <td>3338.000000</td>
+      <td>810000.000000</td>
+      <td>810000.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>describe()函数只能统计int，float数据类型，不能统计字符串和中文字符</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#21019;&#24314;&#20027;&#20307;data&#25968;&#25454;">&#21019;&#24314;&#20027;&#20307;data&#25968;&#25454;<a class="anchor-link" href="#&#21019;&#24314;&#20027;&#20307;data&#25968;&#25454;">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[48]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;E:\python\geopandas\中国各省市大气试验站数量.xlsx&#39;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;gb18030&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[49]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[49]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>NAME</th>
+      <th>num</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>北京市</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>天津市</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>上海市</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>重庆市</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>河北省</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>山西省</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>辽宁省</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>吉林省</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>黑龙江省</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>江苏省</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>浙江省</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>安徽省</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>福建省</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>台湾省</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>江西省</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>山东省</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>河南省</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>湖北省</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>湖南省</td>
+      <td>19</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>广东省</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>海南省</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>四川省</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>贵州省</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>云南省</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>陕西省</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>甘肃省</td>
+      <td>26</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>青海省</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>内蒙古自治区</td>
+      <td>28</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>广西壮族自治区</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>西藏自治区</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>宁夏回族自治区</td>
+      <td>31</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>新疆维吾尔自治区</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>香港特别行政区</td>
+      <td>33</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="pd&#30340;dataframe&#25968;&#25454;&#21644;gpd&#30340;gpddataframe&#25968;&#25454;&#34701;&#21512;">pd&#30340;dataframe&#25968;&#25454;&#21644;gpd&#30340;gpddataframe&#25968;&#25454;&#34701;&#21512;<a class="anchor-link" href="#pd&#30340;dataframe&#25968;&#25454;&#21644;gpd&#30340;gpddataframe&#25968;&#25454;&#34701;&#21512;">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[50]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data_geod</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[51]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data_geod</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[51]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>NAME</th>
+      <th>num</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>北京市</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>天津市</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>上海市</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>重庆市</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>河北省</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>山西省</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>辽宁省</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>吉林省</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>黑龙江省</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>江苏省</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>浙江省</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>安徽省</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>福建省</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>台湾省</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>江西省</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>山东省</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>河南省</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>湖北省</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>湖南省</td>
+      <td>19</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>广东省</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>海南省</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>四川省</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>贵州省</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>云南省</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>陕西省</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>甘肃省</td>
+      <td>26</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>青海省</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>内蒙古自治区</td>
+      <td>28</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>广西壮族自治区</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>西藏自治区</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>宁夏回族自治区</td>
+      <td>31</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>新疆维吾尔自治区</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>香港特别行政区</td>
+      <td>33</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[52]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">da_merge</span> <span class="o">=</span> <span class="n">shp_p</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">data_geod</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s1">&#39;NAME&#39;</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;left&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[53]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">da_merge</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[53]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>AREA</th>
+      <th>PERIMETER</th>
+      <th>BOU2_4M_</th>
+      <th>BOU2_4M_ID</th>
+      <th>ADCODE93</th>
+      <th>ADCODE99</th>
+      <th>NAME</th>
+      <th>geometry</th>
+      <th>num</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>54.447</td>
+      <td>68.489</td>
+      <td>2</td>
+      <td>23</td>
+      <td>230000</td>
+      <td>230000</td>
+      <td>黑龙江省</td>
+      <td>POLYGON ((121.4884414672852 53.33264923095703,...</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>129.113</td>
+      <td>129.933</td>
+      <td>3</td>
+      <td>15</td>
+      <td>150000</td>
+      <td>150000</td>
+      <td>内蒙古自治区</td>
+      <td>POLYGON ((121.4884414672852 53.33264923095703,...</td>
+      <td>28</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>175.591</td>
+      <td>84.905</td>
+      <td>4</td>
+      <td>65</td>
+      <td>650000</td>
+      <td>650000</td>
+      <td>新疆维吾尔自治区</td>
+      <td>POLYGON ((96.38328552246094 42.72695541381836,...</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>21.315</td>
+      <td>41.186</td>
+      <td>5</td>
+      <td>22</td>
+      <td>220000</td>
+      <td>220000</td>
+      <td>吉林省</td>
+      <td>POLYGON ((123.1710433959961 46.24668121337891,...</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>15.603</td>
+      <td>38.379</td>
+      <td>6</td>
+      <td>21</td>
+      <td>210000</td>
+      <td>210000</td>
+      <td>辽宁省</td>
+      <td>POLYGON ((123.6901931762695 43.37676620483398,...</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>41.508</td>
+      <td>76.781</td>
+      <td>7</td>
+      <td>62</td>
+      <td>620000</td>
+      <td>620000</td>
+      <td>甘肃省</td>
+      <td>POLYGON ((96.38328552246094 42.72695541381836,...</td>
+      <td>26</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>19.504</td>
+      <td>44.874</td>
+      <td>8</td>
+      <td>13</td>
+      <td>130000</td>
+      <td>130000</td>
+      <td>河北省</td>
+      <td>POLYGON ((116.9304428100586 42.41144561767578,...</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1.733</td>
+      <td>8.498</td>
+      <td>9</td>
+      <td>11</td>
+      <td>110000</td>
+      <td>110000</td>
+      <td>北京市</td>
+      <td>POLYGON ((117.4960021972656 40.66533660888672,...</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.000</td>
+      <td>0.088</td>
+      <td>10</td>
+      <td>292</td>
+      <td>210000</td>
+      <td>210000</td>
+      <td>辽宁省</td>
+      <td>POLYGON ((121.7627487182617 41.00120162963867,...</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.000</td>
+      <td>0.047</td>
+      <td>11</td>
+      <td>292</td>
+      <td>210000</td>
+      <td>210000</td>
+      <td>辽宁省</td>
+      <td>POLYGON ((121.7978973388672 40.99617767333984,...</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>0.000</td>
+      <td>0.096</td>
+      <td>12</td>
+      <td>292</td>
+      <td>210000</td>
+      <td>210000</td>
+      <td>辽宁省</td>
+      <td>POLYGON ((121.7751770019531 40.98562240600586,...</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>0.000</td>
+      <td>0.114</td>
+      <td>13</td>
+      <td>319</td>
+      <td>210000</td>
+      <td>210000</td>
+      <td>辽宁省</td>
+      <td>POLYGON ((121.8686065673828 40.98577499389648,...</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>0.000</td>
+      <td>0.061</td>
+      <td>14</td>
+      <td>319</td>
+      <td>210000</td>
+      <td>210000</td>
+      <td>辽宁省</td>
+      <td>POLYGON ((121.829719543457 40.96477508544922, ...</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>0.000</td>
+      <td>0.052</td>
+      <td>15</td>
+      <td>319</td>
+      <td>210000</td>
+      <td>210000</td>
+      <td>辽宁省</td>
+      <td>POLYGON ((121.9039306640625 40.97003173828125,...</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>0.000</td>
+      <td>0.041</td>
+      <td>16</td>
+      <td>292</td>
+      <td>210000</td>
+      <td>210000</td>
+      <td>辽宁省</td>
+      <td>POLYGON ((121.7219009399414 40.95944595336914,...</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>0.000</td>
+      <td>0.066</td>
+      <td>17</td>
+      <td>292</td>
+      <td>210000</td>
+      <td>210000</td>
+      <td>辽宁省</td>
+      <td>POLYGON ((121.7564392089844 40.94778060913086,...</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>0.000</td>
+      <td>0.056</td>
+      <td>18</td>
+      <td>292</td>
+      <td>210000</td>
+      <td>210000</td>
+      <td>辽宁省</td>
+      <td>POLYGON ((121.7694473266602 40.95719146728516,...</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>0.000</td>
+      <td>0.064</td>
+      <td>19</td>
+      <td>319</td>
+      <td>210000</td>
+      <td>210000</td>
+      <td>辽宁省</td>
+      <td>POLYGON ((121.861213684082 40.95858764648438, ...</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>0.000</td>
+      <td>0.072</td>
+      <td>20</td>
+      <td>319</td>
+      <td>210000</td>
+      <td>210000</td>
+      <td>辽宁省</td>
+      <td>POLYGON ((121.815788269043 40.9578971862793, 1...</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>0.000</td>
+      <td>0.047</td>
+      <td>21</td>
+      <td>292</td>
+      <td>210000</td>
+      <td>210000</td>
+      <td>辽宁省</td>
+      <td>POLYGON ((121.7279663085938 40.94936370849609,...</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>0.000</td>
+      <td>0.094</td>
+      <td>22</td>
+      <td>319</td>
+      <td>210000</td>
+      <td>210000</td>
+      <td>辽宁省</td>
+      <td>POLYGON ((121.9413986206055 40.921630859375, 1...</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>0.000</td>
+      <td>0.083</td>
+      <td>23</td>
+      <td>319</td>
+      <td>210000</td>
+      <td>210000</td>
+      <td>辽宁省</td>
+      <td>POLYGON ((121.8506011962891 40.93291091918945,...</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>0.000</td>
+      <td>0.072</td>
+      <td>24</td>
+      <td>295</td>
+      <td>210000</td>
+      <td>210000</td>
+      <td>辽宁省</td>
+      <td>POLYGON ((121.5323028564453 40.90837478637695,...</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>0.000</td>
+      <td>0.063</td>
+      <td>25</td>
+      <td>319</td>
+      <td>210000</td>
+      <td>210000</td>
+      <td>辽宁省</td>
+      <td>POLYGON ((121.8383178710938 40.88884735107422,...</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>0.002</td>
+      <td>0.252</td>
+      <td>26</td>
+      <td>319</td>
+      <td>210000</td>
+      <td>210000</td>
+      <td>辽宁省</td>
+      <td>POLYGON ((121.8938369750977 40.880859375, 121....</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>15.961</td>
+      <td>24.784</td>
+      <td>27</td>
+      <td>14</td>
+      <td>140000</td>
+      <td>140000</td>
+      <td>山西省</td>
+      <td>POLYGON ((114.1231994628906 40.74159240722656,...</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>0.002</td>
+      <td>0.209</td>
+      <td>28</td>
+      <td>339</td>
+      <td>210000</td>
+      <td>210000</td>
+      <td>辽宁省</td>
+      <td>POLYGON ((120.8076629638672 40.52430725097656,...</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>1.214</td>
+      <td>7.263</td>
+      <td>29</td>
+      <td>12</td>
+      <td>120000</td>
+      <td>120000</td>
+      <td>天津市</td>
+      <td>POLYGON ((117.4638137817383 40.24003219604492,...</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>0.131</td>
+      <td>2.052</td>
+      <td>30</td>
+      <td>13</td>
+      <td>130000</td>
+      <td>130000</td>
+      <td>河北省</td>
+      <td>POLYGON ((117.193977355957 40.08278274536133, ...</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>0.000</td>
+      <td>0.020</td>
+      <td>31</td>
+      <td>3315</td>
+      <td>210000</td>
+      <td>210000</td>
+      <td>辽宁省</td>
+      <td>POLYGON ((123.9297790527344 39.83435821533203,...</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>894</th>
+      <td>0.000</td>
+      <td>0.016</td>
+      <td>896</td>
+      <td>14</td>
+      <td>460000</td>
+      <td>460000</td>
+      <td>海南省</td>
+      <td>POLYGON ((113.5953979492188 6.943723201751709,...</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>895</th>
+      <td>0.000</td>
+      <td>0.019</td>
+      <td>897</td>
+      <td>15</td>
+      <td>460000</td>
+      <td>460000</td>
+      <td>海南省</td>
+      <td>POLYGON ((113.2508010864258 6.339889049530029,...</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>896</th>
+      <td>0.000</td>
+      <td>0.018</td>
+      <td>898</td>
+      <td>16</td>
+      <td>460000</td>
+      <td>460000</td>
+      <td>海南省</td>
+      <td>POLYGON ((113.2363967895508 6.323439121246338,...</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>897</th>
+      <td>15.512</td>
+      <td>51.107</td>
+      <td>899</td>
+      <td>44</td>
+      <td>440000</td>
+      <td>440000</td>
+      <td>广东省</td>
+      <td>POLYGON ((112.0159072875977 24.73996162414551,...</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>898</th>
+      <td>0.066</td>
+      <td>2.733</td>
+      <td>901</td>
+      <td>3034</td>
+      <td>810000</td>
+      <td>810000</td>
+      <td>香港特别行政区</td>
+      <td>POLYGON ((114.0394897460938 22.50443267822266,...</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>899</th>
+      <td>0.000</td>
+      <td>0.008</td>
+      <td>902</td>
+      <td>3059</td>
+      <td>810000</td>
+      <td>810000</td>
+      <td>香港特别行政区</td>
+      <td>POLYGON ((114.4073333740234 22.41158103942871,...</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>900</th>
+      <td>0.000</td>
+      <td>0.006</td>
+      <td>903</td>
+      <td>3061</td>
+      <td>810000</td>
+      <td>810000</td>
+      <td>香港特别行政区</td>
+      <td>POLYGON ((114.3843765258789 22.40182113647461,...</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>901</th>
+      <td>0.000</td>
+      <td>0.094</td>
+      <td>904</td>
+      <td>3065</td>
+      <td>810000</td>
+      <td>810000</td>
+      <td>香港特别行政区</td>
+      <td>POLYGON ((114.3146133422852 22.34922027587891,...</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>902</th>
+      <td>0.000</td>
+      <td>0.021</td>
+      <td>905</td>
+      <td>3064</td>
+      <td>810000</td>
+      <td>810000</td>
+      <td>香港特别行政区</td>
+      <td>POLYGON ((114.3252868652344 22.36924743652344,...</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>903</th>
+      <td>0.001</td>
+      <td>0.134</td>
+      <td>906</td>
+      <td>3068</td>
+      <td>810000</td>
+      <td>810000</td>
+      <td>香港特别行政区</td>
+      <td>POLYGON ((114.3561630249023 22.33987045288086,...</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>904</th>
+      <td>0.000</td>
+      <td>0.044</td>
+      <td>907</td>
+      <td>3066</td>
+      <td>810000</td>
+      <td>810000</td>
+      <td>香港特别行政区</td>
+      <td>POLYGON ((114.2962112426758 22.35549736022949,...</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>905</th>
+      <td>0.000</td>
+      <td>0.044</td>
+      <td>908</td>
+      <td>3078</td>
+      <td>810000</td>
+      <td>810000</td>
+      <td>香港特别行政区</td>
+      <td>POLYGON ((114.324836730957 22.32900047302246, ...</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>906</th>
+      <td>0.000</td>
+      <td>0.026</td>
+      <td>909</td>
+      <td>3077</td>
+      <td>810000</td>
+      <td>810000</td>
+      <td>香港特别行政区</td>
+      <td>POLYGON ((114.3654632568359 22.34144973754883,...</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>907</th>
+      <td>0.000</td>
+      <td>0.027</td>
+      <td>910</td>
+      <td>3079</td>
+      <td>810000</td>
+      <td>810000</td>
+      <td>香港特别行政区</td>
+      <td>POLYGON ((114.3002319335938 22.32671356201172,...</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>908</th>
+      <td>0.000</td>
+      <td>0.030</td>
+      <td>911</td>
+      <td>3080</td>
+      <td>810000</td>
+      <td>810000</td>
+      <td>香港特别行政区</td>
+      <td>POLYGON ((114.3485412597656 22.31560897827148,...</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>909</th>
+      <td>0.000</td>
+      <td>0.029</td>
+      <td>912</td>
+      <td>3083</td>
+      <td>810000</td>
+      <td>810000</td>
+      <td>香港特别行政区</td>
+      <td>POLYGON ((114.3647079467773 22.30922508239746,...</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>910</th>
+      <td>0.007</td>
+      <td>0.518</td>
+      <td>913</td>
+      <td>3087</td>
+      <td>810000</td>
+      <td>810000</td>
+      <td>香港特别行政区</td>
+      <td>POLYGON ((114.2378768920898 22.26793670654297,...</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>911</th>
+      <td>0.000</td>
+      <td>0.016</td>
+      <td>914</td>
+      <td>3089</td>
+      <td>810000</td>
+      <td>810000</td>
+      <td>香港特别行政区</td>
+      <td>POLYGON ((114.2657699584961 22.27664184570313,...</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>912</th>
+      <td>0.000</td>
+      <td>0.013</td>
+      <td>915</td>
+      <td>3090</td>
+      <td>810000</td>
+      <td>810000</td>
+      <td>香港特别行政区</td>
+      <td>POLYGON ((114.3577728271484 22.27367401123047,...</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>913</th>
+      <td>0.000</td>
+      <td>0.012</td>
+      <td>916</td>
+      <td>3091</td>
+      <td>810000</td>
+      <td>810000</td>
+      <td>香港特别行政区</td>
+      <td>POLYGON ((114.3116226196289 22.27364349365234,...</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>914</th>
+      <td>0.000</td>
+      <td>0.017</td>
+      <td>917</td>
+      <td>3093</td>
+      <td>810000</td>
+      <td>810000</td>
+      <td>香港特别行政区</td>
+      <td>POLYGON ((114.3465805053711 22.26389122009277,...</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>915</th>
+      <td>0.000</td>
+      <td>0.010</td>
+      <td>918</td>
+      <td>3094</td>
+      <td>810000</td>
+      <td>810000</td>
+      <td>香港特别行政区</td>
+      <td>POLYGON ((114.3691635131836 22.26400375366211,...</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>916</th>
+      <td>0.000</td>
+      <td>0.059</td>
+      <td>919</td>
+      <td>3098</td>
+      <td>810000</td>
+      <td>810000</td>
+      <td>香港特别行政区</td>
+      <td>POLYGON ((114.2867813110352 22.24101448059082,...</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>917</th>
+      <td>0.000</td>
+      <td>0.017</td>
+      <td>920</td>
+      <td>3097</td>
+      <td>810000</td>
+      <td>810000</td>
+      <td>香港特别行政区</td>
+      <td>POLYGON ((114.3499374389648 22.25568389892578,...</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>918</th>
+      <td>0.000</td>
+      <td>0.012</td>
+      <td>921</td>
+      <td>3099</td>
+      <td>810000</td>
+      <td>810000</td>
+      <td>香港特别行政区</td>
+      <td>POLYGON ((114.343147277832 22.25142669677734, ...</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>919</th>
+      <td>0.000</td>
+      <td>0.037</td>
+      <td>922</td>
+      <td>3110</td>
+      <td>810000</td>
+      <td>810000</td>
+      <td>香港特别行政区</td>
+      <td>POLYGON ((114.2452697753906 22.18336868286133,...</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>920</th>
+      <td>0.000</td>
+      <td>0.018</td>
+      <td>923</td>
+      <td>3109</td>
+      <td>810000</td>
+      <td>810000</td>
+      <td>香港特别行政区</td>
+      <td>POLYGON ((114.2862014770508 22.18477630615234,...</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>921</th>
+      <td>0.000</td>
+      <td>0.014</td>
+      <td>924</td>
+      <td>3112</td>
+      <td>810000</td>
+      <td>810000</td>
+      <td>香港特别行政区</td>
+      <td>POLYGON ((114.3034973144531 22.18491554260254,...</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>922</th>
+      <td>0.000</td>
+      <td>0.079</td>
+      <td>925</td>
+      <td>3114</td>
+      <td>810000</td>
+      <td>810000</td>
+      <td>香港特别行政区</td>
+      <td>POLYGON ((114.2562789916992 22.16026878356934,...</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>923</th>
+      <td>0.000</td>
+      <td>0.011</td>
+      <td>926</td>
+      <td>3115</td>
+      <td>810000</td>
+      <td>810000</td>
+      <td>香港特别行政区</td>
+      <td>POLYGON ((114.2989273071289 22.17812156677246,...</td>
+      <td>33</td>
+    </tr>
+  </tbody>
+</table>
+<p>924 rows × 9 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[59]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> <span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="c1">#在jupyter中显示matplotlib图片，pandas的绘图也是基于matplotlib，所以也能显示</span>
+<span class="n">da_merge</span><span class="p">[</span><span class="s1">&#39;num&#39;</span><span class="p">][</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">da_merge</span><span class="p">[</span><span class="s1">&#39;num&#39;</span><span class="p">])]</span> <span class="o">=</span> <span class="mi">1</span><span class="c1">#填充缺失数据</span>
+<span class="n">da_merge</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;num&#39;</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">CMRmap</span><span class="p">)</span><span class="c1">#图形初步，如图2所示</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>C:\Users\leegang\Anaconda3\lib\site-packages\ipykernel_launcher.py:3: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
+  This is separate from the ipykernel package so we can avoid doing imports until
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[59]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1bbddbe8eb8&gt;</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+<div class="prompt"></div>
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+RU5ErkJggg==
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>终于得到个初步结果了，安慰……</strong></p>
+
+</div>
+</div>
+</div>
+    </div>
+  </div>
+
+                    </div>
+
+               </div>
+           </div>
+      </div>
+
+</body>
+</html>

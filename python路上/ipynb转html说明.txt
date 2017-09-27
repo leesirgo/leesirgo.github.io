@@ -1,0 +1,4 @@
+cd /d E:\leeSir流年志\python路上
+jupyter nbconvert --to html --template full 文章题目.ipynb
+然后，打开新生成的html,复制到附带博客样式的html文档中 main、article content部分
+最后，在index主文档中添加一个该文章的标题和链接。

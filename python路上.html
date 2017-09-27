@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>  <!--head标签里的东西基本都是元信息，给电脑指定的基本信息-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">  <!--viewport表示浏览器，width=device-width表示适应设备的宽度，initial-scale=1.0表示初始画面1倍-->
+    <title>我的demo主题</title>  <!--html网页的标题-->
+    <meta http-equiv="x-ua-compatible"  content="ie=edge"> <!--让浏览器火力全开-->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/normalize/7.0.0/normalize.min.css">  <!--引用这个前人总结的cdn，规避浏览器设置的某些不好的特性-->
+    <link rel="stylesheet" href="css/main.css"> <!--link引入CSS样式-->
+    <link media="(max-width: 768px)" rel="stylesheet" href="css/mobile.css">  <!--搜索CSS媒体查询mdn-->
+</head>
+
+<body> <!--body是可见元素存放的地方-->
+
+      <div class="sidebar"> <!--博客的侧边栏，第一个大块-->
+          <div class="header">  <!--1.1博客内容的标题-->
+              <img src="image\profile.png" class="image">
+              <a href="index.html" class="logo">leeSir流年志</a>  <!--返回主页-->
+              <div class="intro">假装爱Python的learner</div>
+              </div>
+          <div class="nav">      <!--1.2博客导航,div说明这个区域是导航区-->
+               <a href="about me.html" class="item">关于我</a>  <!--导航区div里面的元素是个超链接用a,不再是div-->
+               <a href="python路上.html" class="item">Python路上</a>
+               <a href="我的书架.html" class="item">我的书架</a>
+               <a href="杂谈.html" class="item">杂谈</a>
+               <a href="moment.html" class="item">Moment</a>
+          </div>
+          <div class="tag-list">   <!--1.3博客标签-->
+               <a class="item"></a>
+               <a class="item"></a>
+               <a class="item"></a>
+          </div>
+      </div>
+
+      <div class="main">     <!-- 博客的主栏，第二个大块-->
+           <div class="article-list">  <!--文章列表，就是文章阅读区-->
+               <div class="item">  <!--文章内容-->
+
+                   <div class="title">使用pelican、jupyter构建Github博客</div>
+                   <div class="status">作者：leesir 时间：0913 标签：pelican jupyter github </div>
+                    <div class="content">利用Github平台实现免费发布网络博客，jupyter用于轻装记录，pelican用于将jupyter转化为html。
+
+                    </div>
+                   <a href="python路上 使用pelican、jupyter构建Github博客的过程.html" class="btn">阅读全文</a>
+
+
+                   <div class="title">统计学基础</div>
+                   <div class="status">作者：leesir 时间：0927 标签：概率 回归 分类</div>
+                    <div class="content"><br>统计是人类认识世界的重要工具。在抽象意义下，一切科学皆是数学；在理性意义下，一切判断皆是统计。<br>
+                        <br>至于统计学是什么？答：统计学是对令人困惑费解的问题做出数字设想的艺术。<br>
+                        <br>
+                        参考资料包括：<br>
+                        吴喜之 《统计学：从数据到结论》<br>
+                        <a href="https://www.zhihu.com/question/33504327" class="btn">知乎：想在没有统计学基础的情况下学习统计学，有什么书值得推荐？</a>
+
+                    </div>
+                   <a class="btn" href="python路上  统计学基础.html">阅读全文</a>
+
+
+                   <div class="title">geopandas绘制地图教程</div>
+                   <div class="status">作者：leesir 时间：0902 标签：geopandas pandas python </div>
+                    <div class="content">绘制地图是一个比较冷门的需求，但是需要用的时候往往不知从何入手，所以技能库中也还是需要这么一项。<br>
+                         其实，绘制地图的方法很多，比如某些线网站、EXCEL 2016自带MAP功能（13版需要安装插件）、matplotlib中的Basemap模块。作为一个fake pythoner,绘制地图当然也要怎么pythonic怎么来。Basemap
+
+                    </div>
+                   <a class="btn" href="python路上 geopandas绘制地图教程.html">阅读全文</a>
+
+               </div>
+           </div>
+      </div>
+
+</body>
+</html>

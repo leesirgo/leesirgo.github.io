@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>  <!--head标签里的东西基本都是元信息，给电脑指定的基本信息-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">  <!--viewport表示浏览器，width=device-width表示适应设备的宽度，initial-scale=1.0表示初始画面1倍-->
+    <title>我的demo主题</title>  <!--html网页的标题-->
+    <meta http-equiv="x-ua-compatible"  content="ie=edge"> <!--让浏览器火力全开-->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/normalize/7.0.0/normalize.min.css">  <!--引用这个前人总结的cdn，规避浏览器设置的某些不好的特性-->
+    <link rel="stylesheet" href="css/main.css"> <!--link引入CSS样式-->
+    <link media="(max-width: 768px)" rel="stylesheet" href="css/mobile.css">  <!--搜索CSS媒体查询mdn-->
+</head>
+
+<body> <!--body是可见元素存放的地方-->
+
+      <div class="sidebar"> <!--博客的侧边栏，第一个大块-->
+          <div class="header">  <!--1.1博客内容的标题-->
+              <img src="image\profile.png" class="image">
+              <a href="index.html" class="logo">leeSir流年志</a>  <!--返回主页-->
+              <div class="intro">假装爱Python的learner</div>
+              </div>
+          <div class="nav">      <!--1.2博客导航,div说明这个区域是导航区-->
+               <a href="about me.html" class="item">关于我</a>  <!--导航区div里面的元素是个超链接用a,不再是div-->
+               <a href="python路上.html" class="item">Python路上</a>
+               <a href="我的书架.html" class="item">我的书架</a>
+               <a href="杂谈.html" class="item">杂谈</a>
+               <a href="moment.html" class="item">Moment</a>
+          </div>
+          <div class="tag-list">   <!--1.3博客标签-->
+               <a class="item"></a>
+               <a class="item"></a>
+               <a class="item"></a>
+          </div>
+      </div>
+
+      <div class="main">     <!-- 博客的主栏，第二个大块-->
+           <div class="article-list">  <!--文章列表，就是文章阅读区-->
+               <div class="item">  <!--文章内容-->
+
+
+                   <div class="title">统计学基础</div>
+                   <div class="status">作者：leesir 时间：0927 标签：概率 回归 分类</div>
+                    <div class="content">
+                        <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#20889;&#22312;&#21069;&#38754;">&#20889;&#22312;&#21069;&#38754;<a class="anchor-link" href="#&#20889;&#22312;&#21069;&#38754;">&#182;</a></h1><p>请记住，统计就是通过样本去推断总体。<br>
+<img src=image\数据概率.png></p>
+<p>林德伯格和莱维20世纪20年代证明了<strong>“中心极限定理”</strong>的存在性，使不同统计分布（二项分布、卡方分布、t分布、F分布等）都最终“皈依”为正态分布（即，<strong>正态逼近原理</strong>）</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#22522;&#30784;&#30693;&#35782;">&#22522;&#30784;&#30693;&#35782;<a class="anchor-link" href="#&#22522;&#30784;&#30693;&#35782;">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#32479;&#35745;&#23398;&#26415;&#35821;">&#32479;&#35745;&#23398;&#26415;&#35821;<a class="anchor-link" href="#&#32479;&#35745;&#23398;&#26415;&#35821;">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Bernoulli&#35797;&#39564;">Bernoulli&#35797;&#39564;<a class="anchor-link" href="#Bernoulli&#35797;&#39564;">&#182;</a></h3><p>仅有结果的重复独立试验被成为Bernoulli试验。发生或不发生，成功或失败。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#20559;&#24046;&#21644;&#35823;&#24046;">&#20559;&#24046;&#21644;&#35823;&#24046;<a class="anchor-link" href="#&#20559;&#24046;&#21644;&#35823;&#24046;">&#182;</a></h3><p><strong>偏差</strong>：以相同的方式影响所有测量值，将它们推向同一方向。例如，称秤的时候将拇指按在重物上，将只会加大重量；<br>
+<strong>误差，也叫残差</strong>：随着不同次的测量而变化，有时向上有时向下。误差=实际-预测</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#30456;&#20851;&#31995;&#25968;-r">&#30456;&#20851;&#31995;&#25968; r<a class="anchor-link" href="#&#30456;&#20851;&#31995;&#25968;-r">&#182;</a></h3><p>相关系数越介于-1~1之间，接近于1，变量间的关系就越强。r=1被称为完全相关。<br>
+相关度量的是相互关系，并不等于因果关系。
+<img src=image\相关系数.jpg>
+<strong>相关系数的计算</strong><br>
+将因变量、自变量都转换为标准单位后的乘积的平均数就是相关系数。<br></p>
+<ol>
+<li>相关系数是标准化后的计算结果，它不受尺度变化的影响</li>
+<li>相关系数是标准化后的计算结果，x与y的相关系数等于y与x的相关系数</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#31163;&#25955;&#20998;&#24067;&#21644;&#36830;&#32493;&#20998;&#24067;">&#31163;&#25955;&#20998;&#24067;&#21644;&#36830;&#32493;&#20998;&#24067;<a class="anchor-link" href="#&#31163;&#25955;&#20998;&#24067;&#21644;&#36830;&#32493;&#20998;&#24067;">&#182;</a></h3><p><strong>离散型随机变量（discrete random variable）</strong>：取值是可数的个值的随机变量，整数。 比如投掷一枚骰子的朝上的点数，可能是1,2,3,4,5,6；比如南京大学四食堂吃饭的人数，可能是0,1,2···。其图像<strong>通常是光滑曲线上独立的散点，没有概率密度函数，只有概率质量函数（Probability Mass Function）。</strong> <br>
+<strong>对于一个离散型变量，其值仅可相差确定的量</strong>。例如两个家庭在人数上仅可相差0，1，2。 <br>
+离散变量落在某个点上的概率就等于其在概率质量函数（可理解为直方图）对应的纵值。</p>
+<p><strong>连续型随机变量（continuous random variable）</strong>：取值是一个区间中的任意一点（也就是不可数）的随机变量，可能为任意小数。比如身高。其图像<strong>通常是条光滑的曲线，有概率密度函数（Probability Distribution Function）</strong> <br>
+连续变量落在某个区间的概率等于这个区间在概率密度曲线下面的面积。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#31163;&#25955;&#22411;&#38543;&#26426;&#21464;&#37327;">&#31163;&#25955;&#22411;&#38543;&#26426;&#21464;&#37327;<a class="anchor-link" href="#&#31163;&#25955;&#22411;&#38543;&#26426;&#21464;&#37327;">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="&#20108;&#39033;&#20998;&#24067;binnomial-distribution">&#20108;&#39033;&#20998;&#24067;binnomial distribution<a class="anchor-link" href="#&#20108;&#39033;&#20998;&#24067;binnomial-distribution">&#182;</a></h4><p><img src=image\二项分布.png>
+二项分布常用符合B(n,p)、Bin(n,p)来表示，n代表试验次数，p代表每次进行Bernoulli试验成功的概率。二项分布的取名源于该分布和二项式展开的系数有关；<br></p>
+<p><strong>判定标准</strong>：<br></p>
+<ol>
+<li>试验次数n已经固定</li>
+<li>每次试验都是Bernoulli试验，即每次试验都只有两种可能的结果</li>
+<li>每次试验成功的概率相等，概率恒定不变，不是指成功概率为50%</li>
+</ol>
+<p><strong>应用</strong>：<br>
+<strong>假如你哪天抛硬币连续三次抛出了正面朝上</strong>，很兴奋，你想知道今天的手气到底有多好？！也就是说，你想知道这个事件发生的概率是多少，当然我相信你也能计算出来，但其实你大可不必亲自动手计算，因为它是满足<strong>二项分布</strong>的，你可以直接查表或者<strong>用excel(BINOM.DIST函数)、R、Python等工具直接输入“试验次数3次，单次成功概率0.5”就可以直接获得概率计算结果了</strong>。这就是方程化的好处。<br></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="&#22810;&#39033;&#20998;&#24067;-multinoial-distribution">&#22810;&#39033;&#20998;&#24067; multinoial distribution<a class="anchor-link" href="#&#22810;&#39033;&#20998;&#24067;-multinoial-distribution">&#182;</a></h4><p>多项分布常用M(n;p1,p2,p3,p4,p5,……)来表示，n代表试验次数，p代表每次试验出现各种结果对应的概率。<br>
+多项分布的每次试验有多种可能的结果；<br></p>
+<p><strong>判定标准</strong>：<br></p>
+<p><strong>应用</strong>：<br></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="&#27850;&#26494;&#20998;&#24067;-Possion-distribution">&#27850;&#26494;&#20998;&#24067; Possion distribution<a class="anchor-link" href="#&#27850;&#26494;&#20998;&#24067;-Possion-distribution">&#182;</a></h4><p>首先，泊松分布是一个典型的离散概率分布，而且是不对称分布，它在右边有一个长长的尾巴。<br>
+<img src=image\典型泊松分布.jpg>
+其次，泊松分布是用差分方程建立模型推导出来的 <a href="http://blog.csdn.net/ningyaliuhebei/article/details/46409215">泊松分布的来源—公式推导—应用 </a><br>
+<img src=image\泊松分布推导.jpg><img src=image\泊松分布公式.jpg>
+还有，泊松是二项模型的一种极限。二项分布在n很大，p很小时，可以用泊松分布算二项分布的概率。<strong>便说一句高斯模型也是二项的极限，同时也是泊松的一种极限形式</strong>。</p>
+<p><strong>判定标准</strong>：<br></p>
+<ol>
+<li>事情是独立事件</li>
+<li>在任意相同的时间范围内，事件发生的概率相同</li>
+<li>你想知道某个时间范围内，发生这件事情X次的概率是多大<br></li>
+</ol>
+<p><strong>应用：泊松分布用于衡量某种事件在一定期间出现的数目的概率,只能用来计算次数</strong><br>
+泊松分布适合于描述单位时间内随机事件发生的次数的概率分布，据说是<strong>交通规划里面必用的一个分布</strong>。如某一服务设施在一定时间内受到的服务请求的次数，电话交换机接到呼叫的次数、汽车站台的候客人数、机器出现的故障数、自然灾害发生的次数、DNA序列的变异数、放射性原子核的衰变数等等。<br>
+possion分布最早提出好像是一军营士兵被马踏到的人数；这2分钟内点进帖子的人数；2分钟内看完点赞的人数都是服从possion分布。比如你想知道一天内中奖的次数，一个月内某机器损坏的次数等，这时候就可以用泊松分布轻松搞定！</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="&#36229;&#20960;&#20309;&#20998;&#24067;">&#36229;&#20960;&#20309;&#20998;&#24067;<a class="anchor-link" href="#&#36229;&#20960;&#20309;&#20998;&#24067;">&#182;</a></h4><p>超结合分布和二项分布比较相似，二项分布每次实验完全一样，而超几何分布前一次的实验结果会影响后面的实验结果。简单地讲，二项分布抽取之后放回元素，而<strong>超几何分布是无放回的抽取</strong>。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#36830;&#32493;&#22411;&#38543;&#26426;&#21464;&#37327;">&#36830;&#32493;&#22411;&#38543;&#26426;&#21464;&#37327;<a class="anchor-link" href="#&#36830;&#32493;&#22411;&#38543;&#26426;&#21464;&#37327;">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="&#27491;&#24577;&#20998;&#24067;-normal-distribution&#65292;&#20063;&#21483;&#39640;&#26031;&#20998;&#24067;-Gaussian-distribution&#65292;&#20063;&#21483;&#956;&#20998;&#24067;">&#27491;&#24577;&#20998;&#24067; normal distribution&#65292;&#20063;&#21483;&#39640;&#26031;&#20998;&#24067; Gaussian distribution&#65292;&#20063;&#21483;&#956;&#20998;&#24067;<a class="anchor-link" href="#&#27491;&#24577;&#20998;&#24067;-normal-distribution&#65292;&#20063;&#21483;&#39640;&#26031;&#20998;&#24067;-Gaussian-distribution&#65292;&#20063;&#21483;&#956;&#20998;&#24067;">&#182;</a></h4><p>正态分布通常用N(μ,σ)或者N(μ,σ^2)表示，N即为normal的意思，μ为总体均值，σ（读sigma）为标准差，σ^2为方差（即标准差的平方，是不是叫“差方”更好记）。<br>
+正态分布是许多统计方法的基础。</p>
+<p><strong>正态分布的概率密度函数形状特征：</strong><br></p>
+<ol>
+<li>μ决定它的位置，σ决定它的幅度。μ=0，σ=1是标准正态分布（standard normal distribution）;</li>
+<li>对称分布，关于μ对称，在μ±σ处有拐点，形状呈中间高两边低的钟形曲线；</li>
+<li>μ、σ不同就是另一个正态分布。
+<img src=image\正态分布公式.jpg>
+<img src=image\正态分布.jpg></li>
+</ol>
+<p><strong>如何确定数据是否正态分布：</strong><br></p>
+<ol>
+<li>图形感受法：建立直方图或者枝干图，看图像的形状是否类似正太曲线，既土墩形或者钟形，并且两端对称。 </li>
+<li>计算区间x±s，x±2s，x±3s，看落在区间的百分比是否近似于68%，95%，100%。（切比雪夫法则和经验法则） </li>
+<li>求IQR和标准差s，计算IQR/s，如若是正态分布，则IQR/s≈1.3.</li>
+<li>建立正态概率图，如果近似正态分布，点会落在一条直线上。 </li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="&#21345;&#26041;&#20998;&#24067;-chi-square-distribution">&#21345;&#26041;&#20998;&#24067; chi-square distribution<a class="anchor-link" href="#&#21345;&#26041;&#20998;&#24067;-chi-square-distribution">&#182;</a></h4><p>卡方分布由阿贝(Abbe)于1863年首先提出的，后来由海尔墨特(Hermert)和现代统计学的奠基人之一的卡·皮尔逊(C K．Pearson)分别于1875年和1900年推导出来，是统计学中的一个非常有用的著名分布。<br>
+<strong>定义：</strong>n个服从标准正态分布的随机变量的平方和的分布规律。其中，参数n称为自由度（即样本中能独立或能自由变化的自变量的个数，称为自由度。<br></p>
+<p><strong>卡方分布的概率密度函数的形状特征：</strong></p>
+<ol>
+<li>随着自由度参数n增大，卡方分布趋近于正态分布</li>
+<li>随着自由度参数n增大，卡方分布向正无穷方向延伸（因为平方值越来越大），分布图也越来越低阔。</li>
+<li>不同自由度决定了不同的卡方分布（自由度不同就是不同的卡方分布），自由度越小，分布约偏斜。</li>
+</ol>
+<p><img src=image\卡方分布.png></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="t&#20998;&#24067;&#65292;&#25110;&#31216;&#20026;&#8220;&#23398;&#29983;&#20998;&#24067;&#8221;-student-distribution">t&#20998;&#24067;&#65292;&#25110;&#31216;&#20026;&#8220;&#23398;&#29983;&#20998;&#24067;&#8221; student distribution<a class="anchor-link" href="#t&#20998;&#24067;&#65292;&#25110;&#31216;&#20026;&#8220;&#23398;&#29983;&#20998;&#24067;&#8221;-student-distribution">&#182;</a></h4><p>之所以叫t分布，是因为提出者Gosset（戈赛特）用t来表示这个分量，而且发表有关论文时用假名字Student。<br>
+<strong>定义：</strong>假设X服从标准正态分布N（0,1），Y服从χ2（n）分布，那么Z=X/sqrt(Y/n)的分布称为自由度为n的t分布,记为 Z～t(n)。<br></p>
+<p><strong>t分布的概率密度函数的形状特征：</strong></p>
+<ol>
+<li>t分布<strong>类似标准正态分布，但是中间瘦一些，而且尾巴长一些；</strong><br></li>
+<li>自由度df越小，分布曲线越低平；自由度df越大，分布曲线越接近标准正态分布（μ分布）。
+<img src=image\t分布.jpg></li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="F&#20998;&#24067;">F&#20998;&#24067;<a class="anchor-link" href="#F&#20998;&#24067;">&#182;</a></h4><p>F分布是1924年英国统计学家R.A.Fisher费舍尔提出，并以其姓氏的第一个字母命名的。<br>
+<strong>定义：</strong>假设X服从自由度为k1的卡方分布，Y服从自由度为k2的卡方分布，这2个独立的卡方分布被各自的自由度除以后的比率这一统计量的分布就叫做F分布。</p>
+<p><strong>F分布的性质：</strong></p>
+<ol>
+<li>F分布是一种非对称分布；</li>
+<li>F分布有两个自由度；</li>
+<li>不同自由度就是不同的F分布;</li>
+<li>当第二个自由度相同时，第一个自由度越小，峰越靠近左边。
+<img src=image\F分布.jpg></li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#28857;&#20272;&#35745;&#21644;&#21306;&#38388;&#20272;&#35745;">&#28857;&#20272;&#35745;&#21644;&#21306;&#38388;&#20272;&#35745;<a class="anchor-link" href="#&#28857;&#20272;&#35745;&#21644;&#21306;&#38388;&#20272;&#35745;">&#182;</a></h2><p><strong>点估计</strong>：用一个估计量来近似总体参数（更绝对）；<br>
+<strong>区间估计</strong>：用一个区间来近似总体参数，认为该区间很可能包含总体参数（留有余地）。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#32622;&#20449;&#21306;&#38388;&#21644;&#32622;&#20449;&#24230;">&#32622;&#20449;&#21306;&#38388;&#21644;&#32622;&#20449;&#24230;<a class="anchor-link" href="#&#32622;&#20449;&#21306;&#38388;&#21644;&#32622;&#20449;&#24230;">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>首先，从点估计、区间估计的定义中可以明显看出，<strong>只有区间估计才有置信区间、置信度这么一说</strong>。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>误区注意点</strong><br></p>
+<ol>
+<li>假如由一个样本数据得到总体参数的<strong>一个95%置信区间</strong>，不能认为该区间就有95%的概率覆盖总体参数。这是错误的！因为，置信度95%仅仅描述用来构造该区间上下界的统计量覆盖总体参数的概率。也就是说，<strong>正确的理解为：无穷次重复抽样所得到的所有区间中大约有95%包含参数；再换种说法，如果我们不厌其烦地抽样本算区间，得到了很多很多置信区间。那么在这些置信区间中，有95%的置信区间能覆盖到该区间</strong>。</li>
+<li>根据置信度的计算公式可知，<strong>置信度是一个包含样本总量的参数，样本量对置信度有很大影响</strong>。意义：针对同一个意见调查，第一拨人调查了10000个人，得到支持率比例为70%，第二拨人只调查了50个人，同样得到支持率比例为70%，它们的置信区间计算结果将都是（0.691，0.709），但是置信区间却相去甚远，<strong>前者为95置信度，后者的置信度却只有1%</strong>。</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#20551;&#35774;&#26816;&#39564;">&#20551;&#35774;&#26816;&#39564;<a class="anchor-link" href="#&#20551;&#35774;&#26816;&#39564;">&#182;</a></h2><h3 id="&#20551;&#35774;&#26816;&#39564;&#30340;&#26415;&#35821;&#21644;&#24605;&#36335;">&#20551;&#35774;&#26816;&#39564;&#30340;&#26415;&#35821;&#21644;&#24605;&#36335;<a class="anchor-link" href="#&#20551;&#35774;&#26816;&#39564;&#30340;&#26415;&#35821;&#21644;&#24605;&#36335;">&#182;</a></h3><p><strong>理论基础：</strong>许多情况下，企图肯定什么事物都很难，然而否定却要相对容易的多。从哲学观点来说，<strong>全称命题都只能被否证，而不能被证明！</strong><br>
+<strong>假设检验都是以否定原假设为目标。</strong>如果否定不了，那就说明证据不足，无法否定原假设，但不能说明原假设正确。<br>
+<strong>假设检验=反证法+小概率事情</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>原假设，也叫零假设</strong>，是对总体参数做出的一个尝试性假设。<br>
+<strong>备选假设</strong>，定义的一个和原假设完全对立的假设。<br>
+<strong>思路：</strong>假设检验就是通过样本数据对两个对立假设进行检验。透露一点，这里的<strong>备选假设</strong>才是真正希望得到支持的结论，而<strong>零假设</strong>是企图拒绝的量。<br></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#20551;&#35774;&#26816;&#39564;&#30340;&#19977;&#31181;&#26174;&#33879;&#27700;&#24179;">&#20551;&#35774;&#26816;&#39564;&#30340;&#19977;&#31181;&#26174;&#33879;&#27700;&#24179;<a class="anchor-link" href="#&#20551;&#35774;&#26816;&#39564;&#30340;&#19977;&#31181;&#26174;&#33879;&#27700;&#24179;">&#182;</a></h3><p>事先规定的概率称为显著水平 significant level，通常用字母α表示，有的软件用Sig表示。通常，假设检验有0.1%、1%、5%三种显著水平，这是自己根据实际问题的需求来确定。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#20551;&#35774;&#26816;&#39564;&#30340;&#19977;&#31181;&#26816;&#39564;&#31867;&#22411;">&#20551;&#35774;&#26816;&#39564;&#30340;&#19977;&#31181;&#26816;&#39564;&#31867;&#22411;<a class="anchor-link" href="#&#20551;&#35774;&#26816;&#39564;&#30340;&#19977;&#31181;&#26816;&#39564;&#31867;&#22411;">&#182;</a></h3><p><strong>双侧检验</strong>：对于居民用电的额定电压是220V，高于此值或低于此值均不符合居民用电标准，非“常态”设置为双侧检验形式比较好；<br>
+<strong>左侧检验</strong>：对于食品的保质期应该大于或等于某个数值，小于保质期就会出问题，此时非“常态”设置为左侧检验比较好<br>
+<strong>右侧检验</strong>：对于人均收入差距，应该在合理范围内波动，不能超过某个设置数值，此时非“常态”设置为右侧检验比较好。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#20551;&#35774;&#26816;&#39564;&#30340;&#20004;&#31867;&#38169;&#35823;">&#20551;&#35774;&#26816;&#39564;&#30340;&#20004;&#31867;&#38169;&#35823;<a class="anchor-link" href="#&#20551;&#35774;&#26816;&#39564;&#30340;&#20004;&#31867;&#38169;&#35823;">&#182;</a></h3><p><strong>第一类错误</strong>：在零假设正确时，小概率事件还是可能发生，这种拒绝了正确零假设的错误通常被称为第一类错误。<br>
+<strong>第二类错误</strong>：在备选假设正确时，却没能拒绝零假设的错误，这叫第二类错误。<br></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#22238;&#24402;&#21644;&#20998;&#31867;">&#22238;&#24402;&#21644;&#20998;&#31867;<a class="anchor-link" href="#&#22238;&#24402;&#21644;&#20998;&#31867;">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#22238;&#24402;&#12289;&#20998;&#31867;&#30340;&#23450;&#20041;&#21450;&#21306;&#21035;">&#22238;&#24402;&#12289;&#20998;&#31867;&#30340;&#23450;&#20041;&#21450;&#21306;&#21035;<a class="anchor-link" href="#&#22238;&#24402;&#12289;&#20998;&#31867;&#30340;&#23450;&#20041;&#21450;&#21306;&#21035;">&#182;</a></h3><p>建立自变量和响应变量之间关系的过程就叫做<strong>回归或分类</strong>，二者的区别在于<strong>因变量的性质</strong>。当因变量为<strong>数量</strong>变量时，叫做<strong>回归regression</strong>；当因变量为<strong>名义</strong>变量（也叫定性变量、分类变量）时，叫做<strong>分类classification</strong>。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#23450;&#37327;&#21464;&#37327;&#22238;&#24402;">&#23450;&#37327;&#21464;&#37327;&#22238;&#24402;<a class="anchor-link" href="#&#23450;&#37327;&#21464;&#37327;&#22238;&#24402;">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#32447;&#24615;&#22238;&#24402;&#20043;&#26368;&#23567;&#20108;&#20056;&#27861;-least-squares-regression">&#32447;&#24615;&#22238;&#24402;&#20043;&#26368;&#23567;&#20108;&#20056;&#27861; least squares regression<a class="anchor-link" href="#&#32447;&#24615;&#22238;&#24402;&#20043;&#26368;&#23567;&#20108;&#20056;&#27861;-least-squares-regression">&#182;</a></h3><p>首先，数量属于数值，其拟合模型建立过程叫回归。没毛病。<br>
+其次，<strong>最小二乘法</strong>线性回归就是寻找一条直线，使得所有点到该直线的垂直距离的平方和最小。最小：<strong>距离最小</strong>，为了减少在因变量方向的误差，也叫<strong>残差平方和最小</strong>；二乘：<strong>古汉语“二乘”是平方的疑似</strong>。<br>
+<img src=image\最小二乘法.jpg></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#32447;&#24615;&#22238;&#24402;&#20043;&#22810;&#20803;&#22238;&#24402;-multiple-regression">&#32447;&#24615;&#22238;&#24402;&#20043;&#22810;&#20803;&#22238;&#24402; multiple regression<a class="anchor-link" href="#&#32447;&#24615;&#22238;&#24402;&#20043;&#22810;&#20803;&#22238;&#24402;-multiple-regression">&#182;</a></h3><p>多元回归和一个变量回归类似，只是变量个数增加了，对对计算机来说没有太大区别。<br></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#21517;&#20041;&#21464;&#37327;&#65288;&#23450;&#24615;&#12289;&#20998;&#31867;&#65289;&#22238;&#24402;&#8212;&#8212;&#20998;&#31867;">&#21517;&#20041;&#21464;&#37327;&#65288;&#23450;&#24615;&#12289;&#20998;&#31867;&#65289;&#22238;&#24402;&#8212;&#8212;&#20998;&#31867;<a class="anchor-link" href="#&#21517;&#20041;&#21464;&#37327;&#65288;&#23450;&#24615;&#12289;&#20998;&#31867;&#65289;&#22238;&#24402;&#8212;&#8212;&#20998;&#31867;">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#8220;&#26159;&#19982;&#21542;&#8221;&#20004;&#20010;&#23450;&#24615;&#21464;&#37327;&#30340;&#22238;&#24402;&#65288;&#20998;&#31867;&#65289;-logistic&#22238;&#24402;">&#8220;&#26159;&#19982;&#21542;&#8221;&#20004;&#20010;&#23450;&#24615;&#21464;&#37327;&#30340;&#22238;&#24402;&#65288;&#20998;&#31867;&#65289;-logistic&#22238;&#24402;<a class="anchor-link" href="#&#8220;&#26159;&#19982;&#21542;&#8221;&#20004;&#20010;&#23450;&#24615;&#21464;&#37327;&#30340;&#22238;&#24402;&#65288;&#20998;&#31867;&#65289;-logistic&#22238;&#24402;">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>logistic回归又称logistic回归分析，是<strong>一种广义的线性回归分析模型</strong>，常用于数据挖掘，疾病自动诊断，经济预测等领域。例如，探讨引发疾病的危险因素，并根据危险因素预测疾病发生的概率等。以胃癌病情分析为例，选择两组人群，一组是胃癌组，一组是非胃癌组，两组人群必定具有不同的体征与生活方式等。因此因变量就为是否胃癌，值为“是”或“否”，<strong>自变量就可以包括很多了，如年龄、性别、饮食习惯、幽门螺杆菌感染等</strong>。自变量既可以是连续的，也可以是分类的。然后通过logistic回归分析，可以得到自变量的权重，从而可以大致了解到底哪些因素是胃癌的危险因素。同时根据该权值可以根据危险因素预测一个人患癌症的可能性。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#22810;&#20010;&#23450;&#24615;&#21464;&#37327;&#30340;&#22238;&#24402;&#65288;&#20998;&#31867;&#65289;-&#32447;&#24615;&#21028;&#21035;&#20998;&#26512;">&#22810;&#20010;&#23450;&#24615;&#21464;&#37327;&#30340;&#22238;&#24402;&#65288;&#20998;&#31867;&#65289;-&#32447;&#24615;&#21028;&#21035;&#20998;&#26512;<a class="anchor-link" href="#&#22810;&#20010;&#23450;&#24615;&#21464;&#37327;&#30340;&#22238;&#24402;&#65288;&#20998;&#31867;&#65289;-&#32447;&#24615;&#21028;&#21035;&#20998;&#26512;">&#182;</a></h3><p>判别分析和决策树都是分类器。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#29616;&#20195;&#20998;&#31867;&#21644;&#22238;&#24402;">&#29616;&#20195;&#20998;&#31867;&#21644;&#22238;&#24402;<a class="anchor-link" href="#&#29616;&#20195;&#20998;&#31867;&#21644;&#22238;&#24402;">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#20915;&#31574;&#26641;">&#20915;&#31574;&#26641;<a class="anchor-link" href="#&#20915;&#31574;&#26641;">&#182;</a></h3><p>决策树是很多现代分类和回归方法的基础。
+<img src=image\决策树.jpg></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>决策树更符合人类思考的习惯，符合条件为yes，不符合条件为no。一般按照yes往左，no往右的习惯。<br>
+评价模型预测好坏的一个准则为<strong>标准化均方误差 normalized mean squares error,NMSE</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#32452;&#21512;&#31639;&#27861;&#20043;Boosting&#26041;&#27861;">&#32452;&#21512;&#31639;&#27861;&#20043;Boosting&#26041;&#27861;<a class="anchor-link" href="#&#32452;&#21512;&#31639;&#27861;&#20043;Boosting&#26041;&#27861;">&#182;</a></h3><p>Boosting方法是基于决策树方法</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#32452;&#21512;&#31639;&#27861;&#20043;&#38543;&#26426;&#26862;&#26519;random-forests&#26041;&#27861;">&#32452;&#21512;&#31639;&#27861;&#20043;&#38543;&#26426;&#26862;&#26519;random forests&#26041;&#27861;<a class="anchor-link" href="#&#32452;&#21512;&#31639;&#27861;&#20043;&#38543;&#26426;&#26862;&#26519;random-forests&#26041;&#27861;">&#182;</a></h3><p>随机森林方法也是基于决策树方法</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#25903;&#25345;&#21521;&#37327;&#26426;support-vector-machine&#65292;SVM">&#25903;&#25345;&#21521;&#37327;&#26426;support vector machine&#65292;SVM<a class="anchor-link" href="#&#25903;&#25345;&#21521;&#37327;&#26426;support-vector-machine&#65292;SVM">&#182;</a></h3><p><strong>支持向量机方法不是基于决策树方法，而是源于数学模型</strong>。<br>
+该方法之所以叫支持向量机，<strong>是因为确定一个分割超平面的不是所有的点，而是与超平面最近的若干点，这些点称为“支持向量”（空间中的点都是向量）</strong>。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#20132;&#21449;&#39564;&#35777;">&#20132;&#21449;&#39564;&#35777;<a class="anchor-link" href="#&#20132;&#21449;&#39564;&#35777;">&#182;</a></h2><p>对于一个数据可能有很多模型来拟合，如何衡量和比较模型的精度呢。<br>
+<strong>将部分数据留作模型的验证</strong>，这个方法很客观，大家都能接受。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#22810;&#20803;&#20998;&#26512;&#8212;&#8212;&#38477;&#32500;&#22788;&#29702;">&#22810;&#20803;&#20998;&#26512;&#8212;&#8212;&#38477;&#32500;&#22788;&#29702;<a class="anchor-link" href="#&#22810;&#20803;&#20998;&#26512;&#8212;&#8212;&#38477;&#32500;&#22788;&#29702;">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>从一堆相互关联的数据中找出一两个有代表意义的指标，就是<strong>降维</strong>。数据越相关，降维效果越好。<strong>注意，如果各个变量都独立，主成分分析、因子分析这些多元分析方法是没有意义的。</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#20027;&#25104;&#20998;&#20998;&#26512;">&#20027;&#25104;&#20998;&#20998;&#26512;<a class="anchor-link" href="#&#20027;&#25104;&#20998;&#20998;&#26512;">&#182;</a></h2><p>原理上说，主成分分析是寻找椭球的所有主轴。所以，原来有几个变量就有几个主成分<br>
+数学上用<strong>解数据相关矩阵的特征值</strong>来寻找主成分。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#22240;&#23376;&#20998;&#26512;">&#22240;&#23376;&#20998;&#26512;<a class="anchor-link" href="#&#22240;&#23376;&#20998;&#26512;">&#182;</a></h2><p>因子分析方法实际上是主成分分析的推广。不同的是，因子分析是事先确定要找多少个成分。所以，从数学模型本身来说，必须先确定因子个数，但很多统计软件默认选择了。<br>
+此外，因子分析的计算过程也比主成分分析更复杂。比如，多了<strong>因子旋转、因子载荷</strong>等概念。<br>
+总的来说，主成分分析、因子分析都依赖于原始变量，都是在对原始进行分析，因此<strong>原始变量的选取很关键</strong>。<br></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#32858;&#31867;&#20998;&#26512;">&#32858;&#31867;&#20998;&#26512;<a class="anchor-link" href="#&#32858;&#31867;&#20998;&#26512;">&#182;</a></h2><p><strong>聚类分析的关键在于度量距离的远近</strong>。注意，聚类分析不需要事先假定有多少类，完全可以按照数据本身的规律来分类。<br></p>
+<p><strong>点间距离</strong>：欧式距离、平方欧式距离、Chebychev距离、Minkovski距离等；<br>
+<img src=image\点间距离.jpg>
+<strong>类间距离</strong>：最短距离法、最长距离法、重心法、类平均法等。
+<img src=image\类间距离.jpg></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="K&#22343;&#20540;&#32858;&#31867;k-means-cluster&#65292;&#20063;&#21483;&#24555;&#36895;&#32858;&#31867;">K&#22343;&#20540;&#32858;&#31867;k-means cluster&#65292;&#20063;&#21483;&#24555;&#36895;&#32858;&#31867;<a class="anchor-link" href="#K&#22343;&#20540;&#32858;&#31867;k-means-cluster&#65292;&#20063;&#21483;&#24555;&#36895;&#32858;&#31867;">&#182;</a></h3><p>通常，<strong>K均值聚类需要事先确定分类个数</strong>（打脸了）。
+<strong>思路</strong>：先假定把观测值分成多少类（假定K类），然后以k个点为“种子”，按照它们的距离远近把所有点分成K类，再以这K类的均值（重心）为新的“种子”再重新分类。如此下去，知道收敛或达到预定目标。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#20998;&#23618;&#32858;&#31867;hierarchical-cluster">&#20998;&#23618;&#32858;&#31867;hierarchical cluster<a class="anchor-link" href="#&#20998;&#23618;&#32858;&#31867;hierarchical-cluster">&#182;</a></h3><p><strong>分层聚类不需要事先确定分类个数</strong>。<br>
+<strong>思路</strong>：起初，有多少点就是多少类；然后，先把最近的两类合并为一类，每一步就少一类；最后，只有一大类。想要几类自己选。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#26102;&#38388;&#24207;&#21015;">&#26102;&#38388;&#24207;&#21015;<a class="anchor-link" href="#&#26102;&#38388;&#24207;&#21015;">&#182;</a></h1><p>时间序列也是某种回归模型，但是它和别的回归有很大区别，区别在于<strong>时间序列是用同一个变量过去的观测值来预测其未来的观测值</strong>；<strong>经典的回归分析</strong>是建立因变量与自变量关系的模型，用自变量来预测因变量。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+    </div>
+  </div>
+                    </div>
+
+
+
+               </div>
+           </div>
+      </div>
+
+</body>
+</html>

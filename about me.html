@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>  <!--head标签里的东西基本都是元信息，给电脑指定的基本信息-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">  <!--viewport表示浏览器，width=device-width表示适应设备的宽度，initial-scale=1.0表示初始画面1倍-->
+    <title>我的demo主题</title>  <!--html网页的标题-->
+    <meta http-equiv="x-ua-compatible"  content="ie=edge"> <!--让浏览器火力全开-->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/normalize/7.0.0/normalize.min.css">  <!--引用这个前人总结的cdn，规避浏览器设置的某些不好的特性-->
+    <link rel="stylesheet" href="css/main.css"> <!--link引入CSS样式-->
+  <!--  <link media="(max-width: 768px)" rel="stylesheet" href="css/mobile.css"> --> <!--搜索CSS媒体查询mdn-->
+</head>
+
+<body> <!--body是可见元素存放的地方-->
+
+      <div class="sidebar"> <!--博客的侧边栏，第一个大块-->
+          <div class="header">  <!--1.1博客内容的标题-->
+              <img src="image\profile.png" class="image">
+              <a href="index.html" class="logo">leeSir流年志</a>  <!--返回主页-->
+              <div class="intro">假装爱Python的learner</div>
+              </div>
+          <div class="nav">      <!--1.2博客导航,div说明这个区域是导航区-->
+            <a href="about me.html" class="item">关于我</a>  <!--导航区div里面的元素是个超链接用a,不再是div-->
+               <a href="python路上.html" class="item">Python路上</a>
+               <a href="我的书架.html" class="item">我的书架</a>
+               <a href="杂谈.html" class="item">杂谈</a>
+               <a href="moment.html" class="item">Moment</a>
+          </div>
+          <div class="tag-list">   <!--1.3博客标签-->
+               <a class="item"></a>
+               <a class="item"></a>
+               <a class="item"></a>
+          </div>
+      </div>
+
+      <div class="main">     <!-- 博客的主栏，第二个大块-->
+           <div class="article-list">  <!--文章列表，就是文章阅读区-->
+               <div class="item">  <!--文章内容-->
+
+                   <div class="title">Who and why?</div>
+                   <div class="status"></div>
+                    <div class="content">
+                        91年<br>理工专业<br>毕业于北京科技大学<br>目前从事理工类工作，偏爱IT技术，正在自学Python<br>
+                         <img src="image\profile.jpg" class="image" width=100%><br>
+                        --生命在于折腾、偏执未尝不可--
+
+
+
+                    </div>
+
+
+
+
+               </div>
+           </div>
+      </div>
+
+</body>
+</html>

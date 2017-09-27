@@ -1,0 +1,88 @@
+/*所有body的子元素都会应用body样式*/
+body{
+   background: #451526;
+   color: #eee;  /*color的属性是继承的，*/
+   lineheight: 10; /*所有的行高，行高是行高，行距是行距*/
+}
+
+/*指定side-bar侧边栏的样式，引用该css时其中的侧边栏所有元素都会用该样式显示*/
+.side-bar{
+     float: left;
+     width: 25%; /*相对body母元素的25%*/
+     position:fixed; /*将侧边栏固定*/
+}
+/*设置logo样式*/
+.logo{
+    border: 5px solid #eee;
+    padding: 20px 20px;
+    font-size: 30px;
+    display: inline-block;
+    margin-bottom:10px ; /*设置一个下边距*/
+    lineheight: 0;  /*单独设置下logo的行高*/
+}
+
+/*这里用的是元素选择器，将a元素的颜色都设置为#eee色*/
+a{
+    color: #eee;
+}
+
+/*把侧边栏下的所有元素都设置padding属性*/
+.side-bar > * {
+    padding: 10px 20px; /*padding边距属性，第一个值是上下距离，第二个值是左右距离*/
+}
+
+.side-bar .nav a,  /*注意逗号*/
+.side-bar .tag-list a {  /*注意空格*/
+    display: block;   /*block表示占母元素的整行，相当于换行显示,很重要！！！*/
+    padding: 10px;
+    color: #777;
+}
+.side-bar .nav a{   /*只把导航栏中的标题为粗体，标签中不设为粗体*/
+    font-weight: 700;  /*粗体*/
+}
+.side-bar .nav a:hover,
+.side-bar .tag-list a:hover {
+    color: #eee;  /*设置当鼠标点击时颜色变量，呈选中状态，很重要*/
+    -webkit-transtion: color 200ms;  /*设置颜色转换时的延迟动画，不要过于生硬*/
+    -o-transtion: color 200ms;
+    transtion: color 200ms;
+}
+
+
+
+/*指定main主栏的样式，引用该css时其中的相应元素都会用该样式显示*/
+.main{
+     float:right;
+     width:75%;
+     color: #454545; /*该部分所有元素（文本、超链接等等）的颜色*/
+
+}
+
+.article-list{   /*给文章阅读区限制个宽度*/
+    margin-right: 30%;  /*右边距留白部分，相对它上一层母元素的比例*/
+    background: #fff;
+    padding: 20px 30px; /*padding边距属性，第一个值是上下距离，第二个值是左右距离*/
+    -webkit-box-shadow: 0 0 3px rgba(0,0,0,0.2);  /*水平偏移量、上下偏移量、扩散量、投影色*/
+    box-shadow: ;
+}
+.article-list .item .title{
+    color: #454545;
+    font-size: 22px;
+    font-weight: 700;
+    margin: 10px 0;
+}
+.article-list .item .status{
+    font-size: 13px;
+    color: #ccc;
+    margin: 10px 0;
+}
+.article-list .item > *{
+    margin: 10px 0;
+}
+
+
+/*side-bar>*表示side-bar里的所有元素*/
+
+
+
+
